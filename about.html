@@ -131,15 +131,53 @@ header {
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #0c0c1d, #1a0f0f);
+    background: radial-gradient(circle at top, #071327, #050d1f 80%);
     color: #ddd;
     padding-top: 100px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.7;
+    animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+.shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to top, white, rgba(255,255,255,0));
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
 }
 
 .container {
     max-width: 900px;
     margin: 24px auto 60px;
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 a {
@@ -279,10 +317,14 @@ p {
     text-align: center;
     color: #cfcfcf;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
 }
 </style>
 </head>
 <body>
+
+<div id="stars"></div>
 
 <header id="header">
     <div class="logo">
@@ -348,5 +390,50 @@ p {
 </div>
 
 <footer class="legal-footer">© 2026 NOCTUA. Tous droits reserves.</footer>
+
+<script>
+const starCount = 150;
+const starsContainer = document.getElementById('stars');
+
+for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    const size = Math.random() * 2 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.top = Math.random() * window.innerHeight + 'px';
+    star.style.left = Math.random() * window.innerWidth + 'px';
+    star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    star.style.opacity = Math.random() * 0.5 + 0.5;
+    starsContainer.appendChild(star);
+}
+
+function shootingStar() {
+    const star = document.createElement('div');
+    star.classList.add('shooting-star');
+
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight / 2;
+    const angle = Math.random() * Math.PI / 2 - Math.PI / 4;
+    const length = Math.random() * 150 + 100;
+    const duration = Math.random() * 1000 + 1000;
+
+    star.style.width = '2px';
+    star.style.height = length + 'px';
+    star.style.top = startY + 'px';
+    star.style.left = startX + 'px';
+    star.style.background = 'linear-gradient(to top, white, rgba(255,255,255,0))';
+
+    star.animate([
+        { transform: `translate(0,0) rotate(${angle}rad)`, opacity: 1 },
+        { transform: `translate(${Math.cos(angle) * length}px, ${Math.sin(angle) * length}px) rotate(${angle}rad)`, opacity: 0 }
+    ], { duration: duration, easing: 'linear', fill: 'forwards' });
+
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), duration);
+}
+
+setInterval(shootingStar, 2000);
+</script>
 </body>
 </html>
