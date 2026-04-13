@@ -768,8 +768,12 @@ header {
     transition: 0.4s;
 }
 
-.section-2 .section-image img:hover {
-    transform: scale(1.03);
+.section-2 .section-image img[src="images/photo2.png"] {
+    transition: none;
+}
+
+.section-2 .section-image img[src="images/photo2.png"]:hover {
+    transform: translateX(-50%);
 }
 
 /* RESPONSIVE */
@@ -3035,8 +3039,6 @@ html, body {
                 Vaporisez sur votre oreiller et laissez installer une sensation de 
                 calme profond, inspirée des bienfaits de l'aromathérapie.
             </p>
-
-            <a href="#" class="btn-outline">En savoir plus</a>
         </div>
 
         <!-- IMAGE -->
@@ -3070,8 +3072,6 @@ html, body {
                 Savourez votre thé, scannez le QR code et laissez un univers sonore 
                 apaisant vous transporter… pour un moment de lâcher-prise complet.
             </p>
-
-            <a href="#" class="btn-outline">Découvrir l'infusion</a>
         </div>
 
     </div>
@@ -3093,8 +3093,6 @@ html, body {
                 Masque de nuit et diffuseur d'ambiance apaisante guident vers un 
                 sommeil profond et réparateur.
             </p>
-
-            <a href="#" class="btn-outline">Explorer le rituel</a>
         </div>
 
         <!-- IMAGE -->
