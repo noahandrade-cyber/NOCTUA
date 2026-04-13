@@ -74,6 +74,10 @@ header {
     transition: 0.3s;
 }
 
+.header-right > a:first-of-type {
+    margin-left: -18px;
+}
+
 .header-right a::after {
     content: "";
     position: absolute;
@@ -262,7 +266,7 @@ header {
 
 .hero-cta {
     position: absolute;
-    bottom: 155px; /* encore plus haut */
+    bottom: 120px; /* plus bas sur l'image */
     right: 55px;   /* 👈 un peu plus à droite */
     z-index: 3;
 }
@@ -310,7 +314,7 @@ header {
     .hero-cta {
         right: 50%;
         transform: translateX(50%);
-        bottom: 74px;
+        bottom: 52px;
     }
 }
 
@@ -352,6 +356,15 @@ header {
 .affiche-banner.fd1-overlay {
     position: relative;
     overflow: hidden;
+    height: auto;
+}
+
+.affiche-banner.fd1-overlay > img {
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+    object-position: initial;
+    display: block;
 }
 
 .fd1-text-overlay {
@@ -359,84 +372,142 @@ header {
     inset: 0;
     z-index: 2;
     text-align: left;
-    color: #f5d7a1;
+    color: #f1c69a;
     font-family: 'Playfair Display', serif;
     text-shadow: 0 3px 14px rgba(0,0,0,0.72);
 }
 
 .fd1-text-overlay .fd1-title {
     position: absolute;
-    top: 6.2%;
-    left: 8.4%;
-    font-size: clamp(1.7rem, 4.4vw, 3.25rem);
-    line-height: 1.08;
-    color: #ffd36b;
+    top: 5.8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.65rem);
+    line-height: 1.12;
+    color: #ffbe58;
+}
+
+.fd1-text-overlay p {
+    margin: 0;
+    max-width: 600px;
 }
 
 .fd1-text-overlay .fd1-line {
     position: absolute;
+    left: 8.5%;
     font-size: clamp(0.98rem, 2.1vw, 1.65rem);
     line-height: 1.28;
 }
 
 .fd1-text-overlay .fd1-l1 {
-    top: 15.8%;
-    left: 6.2%;
+    top: 13.6%;
+    font-size:37px;
+    white-space: nowrap;
 }
 
 .fd1-text-overlay .fd1-l2 {
-    top: 22.2%;
-    left: 8.9%;
+    top: 18.5%;
+    left: 14.8%;
+    font-size: 37px;
+    line-height: 1.60;
+}
+
+.fd1-text-overlay .fd1-l2-silence {
+    display: inline-block;
+    transform: translateY(-4px);
 }
 
 .fd1-text-overlay .fd1-l3 {
-    top: 34.8%;
-    left: 8.7%;
+    font-size: 33px;
+    line-height: 1.18;
+}
+
+.fd1-text-overlay .fd1-l3 {
+    top: 31.7%;
+    left: 14.8%;
+    font-size: 33px;
+}
+
+.fd1-text-overlay .fd1-l3-title {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.fd1-text-overlay .fd1-l3-sub {
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .fd1-text-overlay .fd1-l4 {
-    top: 46.7%;
-    left: 8.7%;
+    top: 41.0%;
+    left: 14.8%;
+    font-size: 33px;
+    line-height: 1.18;
 }
 
 .fd1-text-overlay .fd1-l5 {
-    top: 58.5%;
-    left: 8.7%;
+    top: 51.1%;
+    left: 14.8%;
+    font-size: 33px;
+    line-height: 1.18;
 }
 
-.fd1-text-overlay .focus {
+.fd1-text-overlay .fd1-focus {
     position: absolute;
-    top: 71.8%;
-    left: 50%;
+    bottom: 30.9%;
+    left: 44%;
     transform: translateX(-50%);
-    width: min(86%, 40rem);
+    width: 86%;
     text-align: center;
     font-style: italic;
-    color: #ffd36b;
-    font-size: clamp(1.12rem, 2.45vw, 2rem);
-    line-height: 1.2;
+    color: #ffbe58;
+    font-size: 35px;
+    line-height: 1.22;
     font-weight: 700;
 }
 
-.fd1-text-overlay .fd1-l6 {
-    top: 82.5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(88%, 42rem);
-    text-align: center;
-    font-size: clamp(1.1rem, 2.5vw, 1.95rem);
-    line-height: 1.23;
+.fd1-text-overlay .fd1-focus-line1 {
+    display: inline-block;
+    white-space: nowrap;
 }
 
-.fd1-text-overlay .final {
+.fd1-text-overlay .fd1-l6 {
     position: absolute;
-    top: 94.2%;
+    bottom: 14%;
+    left: 37%;
+    transform: translateX(-50%);
+    width: 88%;
+    text-align: center;
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+.fd1-text-overlay .fd1-l6-line1 {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.fd1-text-overlay .fd1-final {
+    position: absolute;
+    top: 90.4%;
     left: 50%;
     transform: translateX(-50%);
-    width: min(90%, 45rem);
+    width: 100%;
+    max-width: none;
+    padding: 0 2%;
+    box-sizing: border-box;
     text-align: center;
-    font-size: clamp(1.24rem, 2.85vw, 2.3rem);
-    line-height: 1.18;
+    font-size: 40px;
+    line-height: 1.16;
+}
+
+.fd1-text-overlay .fd1-final-line2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .affiche-banner.fd2-overlay {
@@ -473,6 +544,7 @@ header {
     font-style: italic;
     text-decoration: underline;
     text-align: center;
+    white-space: nowrap;
 }
 
 .fd2-list {
@@ -485,14 +557,14 @@ header {
     align-items: center;
     gap: clamp(0.7rem, 1.6vw, 1.1rem);
     left: 11.2%;
-    font-size: clamp(1.15rem, 2.45vw, 2.35rem);
+    font-size: clamp(1.5rem, 3.2vw, 3.1rem);
     line-height: 1.12;
     white-space: nowrap;
 }
 
 .fd2-num {
-    width: clamp(2rem, 4vw, 3.25rem);
-    height: clamp(2rem, 4vw, 3.25rem);
+    width: clamp(2.45rem, 5vw, 4.1rem);
+    height: clamp(2.45rem, 5vw, 4.1rem);
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -500,7 +572,7 @@ header {
     background: #f5c26b;
     color: #1f1530;
     font-weight: 700;
-    font-size: clamp(1rem, 2.2vw, 1.8rem);
+    font-size: clamp(1.25rem, 2.8vw, 2.25rem);
     text-shadow: none;
     flex-shrink: 0;
 }
@@ -1824,77 +1896,93 @@ html {
 }
 
 @media (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-banner,
+    .hero-image-scroll,
+    .affiche-banner {
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero-banner > img.hero-bg {
+        width: 100%;
+        max-width: 100%;
+        height: 72vh;
+        object-fit: cover;
+        object-position: center;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .hero-image-scroll > img,
+    .affiche-banner > img,
+    .section-image > img,
+    .section3-image > img {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        transform: none;
+    }
+
     header {
-        height: 44px;
-        padding: 3px 4px;
-        gap: 4px;
+        height: 80px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
-        flex-wrap: nowrap;
         background: #031235;
-        overflow-x: auto;
     }
 
     .logo img {
-        height: 24px;
+        height: 40px;
     }
 
     .header-right {
-        gap: 2px;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        margin: 0 1px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
         flex: 1;
-        min-width: 0;
+        justify-content: center;
+
         white-space: nowrap;
+        overflow-x: auto;
     }
 
-    .header-right > a,
+    .header-right a,
     .dropdown > a {
-        display: block;
-        max-width: none;
-        font-size: 7px;
-        line-height: 1.1;
-        text-align: center;
-        font-weight: 500;
+        font-size: 13px;
         white-space: nowrap;
-        word-break: keep-all;
+        flex-shrink: 0;
     }
 
     .header-right > a:first-of-type {
+        display: inline-block;
         min-width: max-content;
-        flex-shrink: 0;
         white-space: nowrap;
-        font-size: 6.2px;
-        letter-spacing: -0.1px;
     }
 
     .cart {
-        margin-left: 0;
-        margin-right: 0;
-        gap: 2px;
-        font-size: 7px;
-        min-width: auto;
-        justify-content: flex-end;
-        white-space: nowrap;
+        font-size: 13px;
+        margin-left: 10px;
         flex-shrink: 0;
     }
 
     .cart svg {
-        width: 9px;
-        height: 9px;
-        margin-top: 0;
-    }
-
-    .cart span {
-        display: block;
-        width: auto;
-        line-height: 1;
-        white-space: nowrap;
-        text-align: left;
+        width: 16px;
+        height: 16px;
     }
 
     .hero-banner {
-        margin-top: 44px;
+        margin-top: 80px;
     }
 
     .hero-image-scroll {
@@ -2287,8 +2375,8 @@ html {
 
     .fd1-text-overlay .fd1-title,
     .fd1-text-overlay .fd1-line,
-    .fd1-text-overlay .focus,
-    .fd1-text-overlay .final {
+    .fd1-text-overlay .fd1-focus,
+    .fd1-text-overlay .fd1-final {
         position: static;
         left: auto;
         top: auto;
@@ -2298,31 +2386,31 @@ html {
     }
 
     .fd1-text-overlay .fd1-title {
-        font-size: clamp(1.15rem, 5.4vw, 1.68rem);
+        font-size: clamp(1.05rem, 4.8vw, 1.55rem);
         margin-bottom: 10px;
         letter-spacing: 0.01em;
     }
 
     .fd1-text-overlay .fd1-line {
-        font-size: clamp(0.7rem, 2.75vw, 0.95rem);
-        line-height: 1.18;
+        font-size: clamp(0.78rem, 3vw, 1rem);
+        line-height: 1.2;
         margin-bottom: 8px;
     }
 
-    .fd1-text-overlay .focus {
-        font-size: clamp(0.84rem, 3.1vw, 1.03rem);
+    .fd1-text-overlay .fd1-focus {
+        font-size: clamp(0.9rem, 3.4vw, 1.08rem);
         margin-top: 8px;
         margin-bottom: 4px;
     }
 
     .fd1-text-overlay .fd1-l6 {
-        font-size: clamp(0.88rem, 3.4vw, 1.12rem);
-        line-height: 1.2;
+        font-size: clamp(0.92rem, 3.5vw, 1.15rem);
+        line-height: 1.22;
     }
 
-    .fd1-text-overlay .final {
+    .fd1-text-overlay .fd1-final {
         margin-top: 10px;
-        font-size: clamp(0.93rem, 3.7vw, 1.2rem);
+        font-size: clamp(0.96rem, 3.7vw, 1.22rem);
         line-height: 1.18;
     }
 
@@ -2383,6 +2471,7 @@ html {
 @media (max-width: 420px) {
     .header-right {
         gap: 2px;
+        justify-content: flex-start;
     }
 
     .header-right > a,
@@ -2399,10 +2488,11 @@ html {
         white-space: nowrap;
         font-size: 5.8px;
         letter-spacing: -0.1px;
+        margin-left: -6px;
     }
 
     .logo img {
-        height: 22px;
+        height: 18px;
     }
 
     .cart {
@@ -2421,6 +2511,13 @@ html {
     position: relative;
     z-index: 1;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 </style>
 </head>
 
@@ -2512,13 +2609,13 @@ html {
     <div class="fd1-text-overlay reveal">
         <h2 class="fd1-title">Imaginez enfin des nuits paisibles...</h2>
         <p class="fd1-line fd1-l1">Après une longue journée, vous ralentissez enfin.</p>
-        <p class="fd1-line fd1-l2">La lumière devient douce.<br>Le silence s'installe.</p>
-        <p class="fd1-line fd1-l3">Vous vaporisez délicatement votre brume.<br>Une infusion chaude entre les mains...</p>
+        <p class="fd1-line fd1-l2">La lumière devient douce.<br><span class="fd1-l2-silence">Le silence s'installe.</span></p>
+        <p class="fd1-line fd1-l3"><span class="fd1-l3-title">Vous vaporisez délicatement votre brume.</span><br><span class="fd1-l3-sub">Une infusion chaude entre les mains...</span></p>
         <p class="fd1-line fd1-l4">Votre respiration se calme.<br>Votre esprit s'apaise.</p>
         <p class="fd1-line fd1-l5">Les pensées s'éloignent.<br>Les tensions disparaissent.</p>
-        <p class="focus">Votre corps comprend enfin qu'il est temps<br>de lâcher prise.</p>
-        <p class="fd1-line fd1-l6">Et pour la première fois depuis longtemps...<br>vous vous endormez naturellement,<br>en quelques minutes.</p>
-        <p class="final">Ce moment n'est pas un luxe.<br>C'est ce que votre corps attend chaque soir.</p>
+        <p class="fd1-focus"><span class="fd1-focus-line1">Votre corps comprend enfin qu'il est temps</span><br>de lâcher prise.</p>
+        <p class="fd1-line fd1-l6"><span class="fd1-l6-line1">Et pour la premiere fois depuis longtemps...</span><br>→ vous vous endormez naturellement,<br>en quelques minutes.</p>
+        <p class="fd1-final">Ce moment n'est pas un luxe.<br><span class="fd1-final-line2">C'est ce que votre corps attend chaque soir.</span></p>
     </div>
 </section>
 
