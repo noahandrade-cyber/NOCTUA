@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Avis - NOCTUA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 0 18px;
+    height: 100px;
+    background: rgba(5, 13, 31, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo img {
+    height: 85px;
+}
+
+/* Skip link for accessibility */
+.skip-link{
+    position: absolute;
+    left: -999px;
+    top: 8px;
+    background: #ffd700;
+    color: #050d1f;
+    padding: 8px 12px;
+    border-radius: 6px;
+    z-index: 2000;
+}
+.skip-link:focus{
+    left: 18px;
+}
+
+/* NAV */
+
+.header-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: 300;
+    position: relative;
+    transition: 0.3s;
+}
+
+.header-right a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, #ffd700, #b8860b);
+    transition: 0.3s;
+}
+
+.header-right a:hover::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #050d1f;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 10px;
+    min-width: 180px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    padding: 12px 15px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255,215,0,0.08);
+    color: #ffd700;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* PANIER */
+
+.cart {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #eee;
+    white-space: nowrap;
+}
+
+.cart:hover {
+    color: #ffd700;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(18,38,72,1), #050d1f 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 45%);
+    color: #fff;
+    padding-top: 100px;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-avis {
+    text-align: center;
+    padding: 96px 20px 76px;
+    position: relative;
+}
+
+.hero-avis::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,215,0,0.08), transparent 70%);
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.03);
+    color: #f2c66d;
+    font-size: 14px;
+    margin-bottom: 22px;
+    backdrop-filter: blur(6px);
+}
+
+.hero-avis h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(46px, 6vw, 66px);
+    margin-bottom: 20px;
+    color: #fff;
+    letter-spacing: 0.3px;
+}
+
+.hero-avis p {
+    max-width: 760px;
+    margin: auto;
+    line-height: 1.75;
+    color: #c9d2e1;
+    font-size: 17px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 56px;
+}
+
+.stat-card {
+    width: 220px;
+    padding: 28px 24px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    transition: 0.4s;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,215,0,0.4);
+}
+
+.stat-number {
+    font-size: 40px;
+    font-weight: 700;
+    color: #f2c66d;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #c9d2e1;
+}
+
+/* =========================
+   AVIS SECTION
+========================= */
+
+.testimonials {
+    max-width: 1280px;
+    margin: auto;
+    padding: 10px 24px 110px;
+}
+
+.testimonials-head {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-tag {
+    color: #f2c66d;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.testimonials-head h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 4vw, 46px);
+    margin: 18px 0;
+}
+
+.testimonials-head p {
+    color: #bfc8d6;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+/* GRID */
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* CARD */
+
+.testimonial-card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 28px;
+    background:
+        linear-gradient(180deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,215,0,0.35);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+.testimonial-card::before {
+    content: "“";
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 120px;
+    color: rgba(255,215,0,0.08);
+    font-family: serif;
+}
+
+.testimonial-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.testimonial-avatar img {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,215,0,0.35);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.verified-line {
+    color: #89ffb5;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.trustpilot-badge {
+    background: rgba(255,215,0,0.08);
+    color: #f2c66d;
+    padding: 8px 12px;
+    border-radius: 40px;
+    font-size: 12px;
+    border: 1px solid rgba(255,215,0,0.2);
+    white-space: nowrap;
+}
+
+.testimonial-stars {
+    color: #ffd700;
+    font-size: 18px;
+}
+
+.testimonial-stars span {
+    color: #9fb0c8;
+    font-size: 14px;
+}
+
+.testimonial-card p {
+    line-height: 1.8;
+    color: #dfe7f4;
+    margin: 0;
+    font-size: 15.5px;
+    font-style: italic;
+    white-space: pre-line;
+}
+
+.testimonial-date {
+    color: #8896aa;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta-section {
+    margin: 0 auto 90px;
+    max-width: 1100px;
+    padding: 60px;
+    border-radius: 32px;
+    background:
+        linear-gradient(135deg,
+        rgba(255,215,0,0.08),
+        rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 4vw, 44px);
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    color: #d6dbe6;
+    max-width: 700px;
+    margin: auto auto 35px;
+    line-height: 1.8;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 16px 34px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #050d1f;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffd700, #f2c66d);
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.legal-footer {
+    margin-top: 32px;
+    padding: 24px;
+    text-align: center;
+    color: #cfcfcf;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(5,13,31,0.35);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Header: larger touch targets and subtle spacing */
+    header {
+        height: 64px;
+        padding: 8px 16px;
+    }
+
+    .logo img {
+        height: 42px;
+    }
+
+    .header-right {
+        gap: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .header-right a {
+        font-size: 12px;
+        padding: 6px 8px;
+        border-radius: 8px;
+    }
+
+    .cart {
+        font-size: 13px;
+        margin-right: 4px;
+    }
+
+    body {
+        padding-top: 64px;
+    }
+
+    /* Hero adjustments */
+    .hero-avis {
+        padding: 80px 18px 60px;
+    }
+
+    .hero-avis h1 {
+        font-size: clamp(28px, 8vw, 42px);
+        margin-bottom: 18px;
+    }
+
+    .hero-avis p {
+        font-size: 16px;
+        padding: 0 8px;
+    }
+
+    .hero-tag {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    .testimonials-head h2 {
+        font-size: clamp(22px, 5vw, 34px);
+    }
+
+    /* Testimonials: single column, clearer cards */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 12px;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .testimonial-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .testimonial-avatar img {
+        width: 72px;
+        height: 72px;
+        border-radius: 12px;
+    }
+
+    .trustpilot-badge {
+        margin-left: auto;
+        font-size: 12px;
+    }
+
+    .testimonial-stars {
+        font-size: 16px;
+    }
+
+    .testimonial-card p {
+        font-size: 15px;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .testimonial-date {
+        font-size: 13px;
+        color: #9aa6b8;
+        margin-top: 6px;
+    }
+
+    /* CTA full width */
+    .cta-section {
+        padding: 28px 18px;
+        margin: 18px;
+    }
+
+    .cta-btn {
+        display: block;
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 16px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+    <a class="skip-link" href="#testimonials-root">Aller aux avis</a>
+
+<header id="header" role="banner">
+
+    <div class="logo">
+        <img src="images/logo.png" alt="NOCTUA">
+    </div>
+
+    <div class="header-right">
+
+        <a href="index.html">Le Rituel cocon</a>
+
+        <div class="dropdown">
+            <a href="#">Produits ▼</a>
+
+            <div class="dropdown-content">
+                <a href="#">La brume</a>
+                <a href="#">L'infusion</a>
+                <a href="#">Le masque</a>
+                <a href="#">L'enceinte</a>
+                <a href="#">Le bracelet</a>
+                <a href="#">L'infuseur</a>
+                <a href="#">Le QR Code</a>
+                <a href="#">La box</a>
+            </div>
+        </div>
+
+        <a href="about.html">Notre Histoire</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <a class="cart" href="cart.html">
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="20"
+             height="20"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             viewBox="0 0 24 24">
+
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.5L23 6H6"></path>
+
+        </svg>
+
+        <span>Mon Panier</span>
+
+    </a>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero-avis">
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            ✨ Plus de 193 clients satisfaits
+        </div>
+
+        <h1>Les avis NOCTUA</h1>
+
+        <p>
+            Découvrez les retours authentiques de nos clients après plusieurs semaines
+            d’utilisation du rituel sommeil NOCTUA. Une expérience pensée pour retrouver
+            des nuits plus apaisées, profondes et réparatrices.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="stat-number">4,8/5</div>
+                <div class="stat-label">Note moyenne</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">193+</div>
+                <div class="stat-label">Clients satisfaits</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">96%</div>
+                <div class="stat-label">Recommandent NOCTUA</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- AVIS -->
+
+<section class="testimonials" role="main" aria-labelledby="testimonials-heading">
+
+    <div class="testimonials-head">
+
+        <span class="section-tag">
+            🌙 Ils dorment enfin mieux avec NOCTUA
+        </span>
+
+        <h2 id="testimonials-heading">Ce qu’en disent nos clients</h2>
+
+        <p>
+            Des retours sincères et détaillés qui illustrent les résultats obtenus
+            grâce au rituel sommeil NOCTUA.
+        </p>
+
+    </div>
+
+    <div id="testimonials-root" class="testimonials-grid"></div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section">
+
+    <h2>Rejoignez l’expérience NOCTUA</h2>
+
+    <p>
+        Offrez-vous un rituel du soir conçu pour transformer vos nuits et retrouver
+        un sommeil plus profond dans une atmosphère élégante et apaisante.
+    </p>
+
+    <a href="#" class="cta-btn">
+        Découvrir le rituel →
+    </a>
+
+</section>
+
+<footer class="legal-footer">
+    © 2026 NOCTUA. Tous droits réservés.
+</footer>
+
+<!-- React (dev via CDN) -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+// Données d'avis (réutilisent les images existantes)
+const testimonials = [
+    {name: 'Sarah Labenne', avatar: 'images/sara.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Je suis extrêmement satisfaite des produits !\nLe travail réalisé est vraiment de grande qualité et très complet,\nje suis insomniaque et j’ai pourtant dormi comme un bébé.\nJ’ai hâte du jour de lancement officiel, j’adore, j’adhère totalement !`, date: 'Publié le 23 mars 2026'},
+    {name: 'Vanessa Serrien', avatar: 'images/vanessa.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Le résultat a dépassé mes attentes !\nMon compagnon et moi-même utilisons le coffret très souvent,\non devient de vrai marmotte, trop fan.\nJe recommande à 100% !`, date: 'Publié le 26 mars 2026'},
+    {name: 'Virg Ninie Mimi', avatar: 'images/virg_ninie.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Ravie de la qualité des produits et du service !\nTrop heureuse d’avoir été choisie pour essayer le concept\navant tout le monde, je n’en ressort que du positif et\nsurtout de très bonne nuit !! Vivement conseillé.`, date: 'Publié le 26 mars 2026'},
+    {name: 'Nathalie Minne', avatar: 'images/nathalie.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `On valide, concept complet, réaliste et efficace`, date: 'Publié le 27 mars 2026'},
+    {name: 'Arnaud Zeylen', avatar: 'images/arnaud.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `L’équipe est très pro, réactive et à l’écoute.\nTrès bonne expérience et projet au top, j’achète les yeux fermés.\nJe recommande vraiment`, date: 'Publié le 30 mars 2026'},
+    {name: 'Grégory Gérard', avatar: 'images/gregori.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `J’ai fait partie des sélectionnés pour essayer le coffret et mon\nenvie de dormir m’a clairement surpris, je suis pourtant robuste.\nExcellent !`, date: 'Publié le 30 mars 2026'},
+    {name: 'Audrey Sunshin', avatar: 'images/audrey.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Noctua est devenu ma routine, mon rituel du soir et cela fait\nvraiment beaucoup de bien de se sentir apaisé après\nde grosse journée stressante au boulot.\nSuper produit qualitatif et je recommande à 100% !`, date: 'Publié le 01 avril 2026'},
+    {name: 'Jonas Labenne', avatar: 'images/jonas.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Ils ont vraiment pensé à tout, même à intégrer un infuseur qu’on\nne doit pas aller chercher en plus, plus haut de gamme que\nbeaucoup d’autre et surtout très complet.\nRituel au top et efficace dès la première utilisation.`, date: 'Publié le 03 avril 2026'}
+];
+
+function TestimonialCard({t}){
+    return (
+        <article className="testimonial-card">
+            <div className="testimonial-top">
+                <div className="testimonial-user">
+                    <div className="testimonial-avatar"><img src={t.avatar} alt={t.name} /></div>
+                    <div>
+                        <strong>{t.name}</strong>
+                        <div className="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div className="trustpilot-badge">{t.badge}</div>
+            </div>
+            <div className="testimonial-stars">{t.stars} <span>Trustpilot</span></div>
+            <p>{t.text}</p>
+            <span className="testimonial-date">{t.date}</span>
+        </article>
+    );
+}
+
+function TestimonialsGrid(){
+    return (
+        <>
+            {testimonials.map((t, i) => <TestimonialCard key={i} t={t} />)}
+        </>
+    );
+}
+
+// Render
+const root = ReactDOM.createRoot(document.getElementById('testimonials-root'));
+root.render(<TestimonialsGrid />);
+</script>
+
+<script>
+
+let prevScrollpos = window.pageYOffset;
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+        let currentScrollPos = window.pageYOffset;
+
+        header.style.top =
+                prevScrollpos > currentScrollPos ? "0" : "-120px";
+
+        prevScrollpos = currentScrollPos;
+});
+
+</script>
+
+</body>
+</html>
